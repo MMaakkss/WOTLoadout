@@ -9,7 +9,7 @@
     "watch": [
       "src"
     ],
-    "exec": "node -r tsconfig-paths/register -r ts-node/register ./src/index.ts",
+    "exec": "node -r tsconfig-paths/register -r ts-node/register ./api/index.ts",
     "ext": "ts, js"
   },
   "scripts": {
