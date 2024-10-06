@@ -1,6 +1,10 @@
 import express from "express"
-import routes from "./src/routes/index"
+import 'dotenv/config'
+import routes from "./src/routes"
 import { errorHandler } from "./src/middlewares/error-handler"
+import { connectToDB } from "./src/config/mongoose"
+
+connectToDB()
 
 const app = express()
 
