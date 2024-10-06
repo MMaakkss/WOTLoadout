@@ -13,7 +13,7 @@
     "ext": "ts, js"
   },
   "scripts": {
-    "build": "npx tsc",
+    "build": "[my-framework] build --output public",
     "preview": "node dist/index.js",
     "dev": "nodemon"
   },
