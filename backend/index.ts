@@ -1,12 +1,10 @@
 import express from "express"
-import routes from "@/routes"
+import routes from "./src/routes/index"
 
 const app = express()
 app.use(express.json())
 
 app.use("/api", routes)
-// @ts-ignore
-app.get("/", (req, res) => res.send("Express on Vercel"));
 
 const PORT = process.env.PORT || 3000
 
