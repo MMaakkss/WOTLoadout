@@ -1,13 +1,13 @@
 export default class ApiError extends Error {
-  status: number;
-  errors: Array<{ [key: string]: any }>
+  status: number
+  errors: Array<{ [key: string]: unknown }>
 
   constructor(
-      status: number,
-      message: string,
-      errors: Array<{ [key: string]: any }> = []
+    status: number,
+    message: string,
+    errors: Array<{ [key: string]: unknown }> = [],
   ) {
-    super(message);
+    super(message)
     this.status = status
     this.errors = errors
   }
@@ -17,8 +17,8 @@ export default class ApiError extends Error {
   }
 
   static BadRequest(
-      message: string,
-      errors: Array<{ [key: string]: any }> = []
+    message: string,
+    errors: Array<{ [key: string]: unknown }> = [],
   ) {
     return new ApiError(400, message, errors)
   }
