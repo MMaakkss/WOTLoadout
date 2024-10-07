@@ -1,11 +1,11 @@
-const tanksList = [
-  { id: 1, name: "Leopard" },
-  { id: 2, name: "E100" },
-  { id: 3, name: "T-100" },
-]
+import { WotApi } from '../../services/wotApi'
+
+const wotApi = new WotApi()
 
 export class TankService {
   async getList() {
-    return tanksList
+    const data = await wotApi.getVehicles()
+
+    return data.data
   }
 }
