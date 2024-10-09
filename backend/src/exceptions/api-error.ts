@@ -1,12 +1,8 @@
 export default class ApiError extends Error {
   status: number
-  errors: Array<{ [key: string]: unknown }>
+  errors: unknown[]
 
-  constructor(
-    status: number,
-    message: string,
-    errors: Array<{ [key: string]: unknown }> = [],
-  ) {
+  constructor(status: number, message: string, errors: unknown[] = []) {
     super(message)
     this.status = status
     this.errors = errors
@@ -16,10 +12,7 @@ export default class ApiError extends Error {
     return new ApiError(401, 'User not authenticated' + message)
   }
 
-  static BadRequest(
-    message: string,
-    errors: Array<{ [key: string]: unknown }> = [],
-  ) {
+  static BadRequest(message: string, errors: unknown[] = []) {
     return new ApiError(400, message, errors)
   }
 }

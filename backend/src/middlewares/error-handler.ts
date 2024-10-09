@@ -13,5 +13,5 @@ export const errorHandler = (
     res.status(err.status).json({ message: err.message, errors: err.errors })
   }
 
-  res.status(500).json({ message: 'Unexpected error occurred' })
+  res.status(500).json({ message: `Unexpected error. ${err}` })
 }

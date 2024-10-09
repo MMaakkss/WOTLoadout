@@ -1,12 +1,12 @@
-import { NextFunction, Request, Response, Router } from "express"
-import { TankService } from "./tank.servise"
+import { NextFunction, Request, Response, Router } from 'express'
+import { TankService } from './tank.servise'
 
 const tankService = new TankService()
 
 const router = Router()
 
 router.get(
-  "/getList",
+  '/getList',
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const list = await tankService.getList()
@@ -15,7 +15,7 @@ router.get(
     } catch (error) {
       next(error)
     }
-  }
+  },
 )
 
 export default router

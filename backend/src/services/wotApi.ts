@@ -1,14 +1,16 @@
-import { axiosInstance } from '../config/axios'
-
-const BASE_URL = process.env.WOT_URL || ''
+import { wotAxiosInstance } from '../config/axios'
+import { IWotSuccessResponse } from '../models/axios'
 
 export class WotApi {
   async getVehicles(limit: number = 25, page_no: number = 1) {
-    const res = await axiosInstance.get(BASE_URL + '/vehicles/', {
+    const res = await wotAxiosInstance.get<
+      IWotSuccessResponse,
+      IWotSuccessResponse
+    >('/vehicles/', {
       params: {
         limit,
-        page_no
-      }
+        page_no,
+      },
     })
 
     return res.data
