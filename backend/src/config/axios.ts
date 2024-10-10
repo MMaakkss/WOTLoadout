@@ -2,10 +2,10 @@ import axios from 'axios'
 import { IVehicleResponse } from '../models/vehicles'
 
 const WOT_APP_ID = process.env.WOT_APP_ID
-const BASE_WOR_URL = process.env.WOT_URL || ''
+const BASE_WOT_URL = process.env.WOT_URL || ''
 
 export const wotAxiosInstance = axios.create({
-  baseURL: BASE_WOR_URL,
+  baseURL: BASE_WOT_URL,
   headers: {
     Accept: 'application/json',
   },
