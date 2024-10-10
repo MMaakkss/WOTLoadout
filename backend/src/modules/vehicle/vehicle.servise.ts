@@ -1,6 +1,6 @@
 import { WotApi } from '../../services/wotApi'
 import ApiError from '../../exceptions/api-error'
-import WotResponse from 'src/utils/wotResponse'
+import WotResponse from '../../utils/wotResponse'
 
 const wotApi = new WotApi()
 
