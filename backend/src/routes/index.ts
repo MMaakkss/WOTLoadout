@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import tankRouter from '../modules/tank/tank.controller'
+import vehicleRouter from '../modules/vehicle/vehicle.controller'
 
 const router = Router()
 
-router.use(tankRouter)
+router.use(vehicleRouter)
 
 export default router
