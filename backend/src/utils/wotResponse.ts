@@ -5,7 +5,7 @@ import {
 } from '../models/vehicles'
 
 export default class WotResponse {
-  static formatToArray(res: IVehicleResponseObject): IVehicleData[] {
+  static convertToArray(res: IVehicleResponseObject): IVehicleData[] {
     const array: IVehicleData[] = []
 
     for (const obj in res) {
