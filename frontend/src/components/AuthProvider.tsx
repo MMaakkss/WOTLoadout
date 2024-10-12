@@ -1,27 +1,13 @@
-import {
-  createContext,
-  PropsWithChildren,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import { User } from '../types/user'
-
-type AuthContext = {
-  currentUser: User | null
-  isLoading: boolean
-  handleLogin: () => Promise<void>
-  handleLogout: () => Promise<void>
-}
-
-const AuthContext = createContext<AuthContext | undefined>(undefined)
+import { AuthContext } from '../context/authContext'
 
 export async function getUser() {
   await new Promise((resolve) => setTimeout(resolve, 5000))
   return 'ss'
 }
 
-export default function AuthProvied({ children }: PropsWithChildren) {
+export default function AuthProvider({ children }: PropsWithChildren) {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -66,14 +52,4 @@ export default function AuthProvied({ children }: PropsWithChildren) {
       {children}
     </AuthContext.Provider>
   )
-}
-
-export const useAuth = () => {
-  const context = useContext(AuthContext)
-
-  if (context === undefined) {
-    throw new Error('useAuth must be used inside of a AuthProvider')
-  }
-
-  return context
 }

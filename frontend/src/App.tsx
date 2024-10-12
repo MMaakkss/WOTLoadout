@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react'
 import './App.css'
-import { useAuth } from './components/AuthProvider'
+import { useAuth } from './hooks/useAuth'
 
 function App({ children }: PropsWithChildren) {
   const { isLoading } = useAuth()
