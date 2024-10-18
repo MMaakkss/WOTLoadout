@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGO_DB_URI")
+}
+
+model User {
+  id             String      @id @default(auto()) @map("_id") @db.ObjectId
+  nickname       String      @unique
+  email          String      @unique
+  hashedPassword String?
+  role           UserRole    @default(USER)
+  tankBuilds     TankBuild[]
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+model TankBuild {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  title  String @unique
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @db.ObjectId
+}

@@ -12,10 +12,19 @@
     "exec": "node -r tsconfig-paths/register -r ts-node/register ./index.ts",
     "ext": "ts, js"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "build": "npx tsc",
     "preview": "node dist/index.js",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "prisma:client": "prisma generate",
+    "prisma:diff": "prisma migrate dev --create-only --name",
+    "prisma:status": "prisma migrate status",
+    "prisma:apply": "prisma migrate deploy",
+    "prisma:dev:seed": "prisma db seed",
+    "prisma:dev:update": "prisma db push"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
@@ -28,12 +37,14 @@
     "globals": "^15.10.0",
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3",
+    "prisma": "^5.21.1",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.8.0"
   },
   "dependencies": {
+    "@prisma/client": "^5.21.1",
     "axios": "^1.7.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
