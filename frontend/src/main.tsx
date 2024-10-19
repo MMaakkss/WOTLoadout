@@ -1,11 +1,15 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './index.css'
+import { Provider } from 'react-redux'
 import Login from './pages/Login.tsx'
 import HomePage from './pages/HomePage.tsx'
 import AuthProvider from './components/AuthProvider.tsx'
 import ProtectedRoute from './components/ProtectedRoute.tsx'
+
+import { store } from './store/store.ts'
+
+import './index.css'
 
 const router = createBrowserRouter([
   {
@@ -24,8 +28,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </Provider>
   </StrictMode>,
 )
