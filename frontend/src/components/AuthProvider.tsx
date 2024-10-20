@@ -2,11 +2,6 @@ import { PropsWithChildren, useEffect, useState } from 'react'
 import { User } from '../types/user'
 import { AuthContext } from '../context/authContext'
 
-export async function getUser() {
-  await new Promise((resolve) => setTimeout(resolve, 5000))
-  return 'ss'
-}
-
 export default function AuthProvider({ children }: PropsWithChildren) {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
