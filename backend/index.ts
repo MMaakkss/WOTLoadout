@@ -1,8 +1,9 @@
 import express from 'express'
 import 'dotenv/config'
-// import cors from 'cors'
+import bodyParser from 'body-parser'
+import cors from 'cors'
 import routes from './src/routes'
-import { errorHandler } from './src/middlewares/error-handler'
+import { errorHandler } from './src/middlewares/errorHandler'
 import { connectToDB } from './src/config/mongoose'
 
 connectToDB()
@@ -10,12 +11,15 @@ connectToDB()
 const app = express()
 
 app.use(express.json())
-// app.use(cors())
+app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/api', routes)
 
 app.use((req, res) => {
-  res.status(404).json({ message: 'Gerara of here man shit. This route not found' })
+  res
+    .status(404)
+    .json({ message: 'Gerara of here man shit. This route not found' })
 })
 
 app.use(errorHandler)

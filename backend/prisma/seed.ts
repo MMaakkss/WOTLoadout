@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient()
 
@@ -7,11 +8,14 @@ async function main() {
   await prisma.tankBuild.deleteMany()
   await prisma.user.deleteMany()
 
+  const pass1 = await bcrypt.hash('hashedpassword123', 5)
+  const pass2 = await bcrypt.hash('adminhashedpassword123', 5)
+
   const user1 = await prisma.user.create({
     data: {
       nickname: 'TankMaster',
       email: 'tankmaster@example.com',
-      hashedPassword: 'hashedpassword123',
+      hashedPassword: pass1,
       role: 'USER',
       tankBuilds: {
         create: [
@@ -27,7 +31,7 @@ async function main() {
     data: {
       nickname: 'AdminPro',
       email: 'adminpro@example.com',
-      hashedPassword: 'adminhashedpassword123',
+      hashedPassword: pass2,
       role: 'ADMIN',
       tankBuilds: {
         create: [
