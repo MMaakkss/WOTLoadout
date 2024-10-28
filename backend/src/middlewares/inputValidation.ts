@@ -7,10 +7,10 @@ export const inputValidation = (
   res: Response,
   next: NextFunction,
 ) => {
-  const error = validationResult(req)
+  const errors = validationResult(req)
 
-  if (error.array().length) {
-    res.status(400).json(new ApiError(400, 'Validation error', error.array()))
+  if (!errors.isEmpty()) {
+    next(ApiError.BadRequest('Validation error', errors.array()))
   } else {
     next()
   }
