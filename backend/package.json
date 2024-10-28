@@ -19,6 +19,7 @@
     "build": "npx tsc",
     "preview": "node dist/index.js",
     "dev": "nodemon",
+    "lint": "eslint --ignore-pattern \"dist/**/*\"",
     "prisma:client": "prisma generate",
     "prisma:diff": "prisma migrate dev --create-only --name",
     "prisma:status": "prisma migrate status",
