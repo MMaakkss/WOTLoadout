@@ -2,6 +2,7 @@ import ApiError from '../../exceptions/api-error'
 import prisma from '../../../prisma/prisma'
 import bcrypt from 'bcrypt'
 import TokenService from '../../services/token'
+import { removeFields } from '../../utils/helpers'
 
 interface IRegisterData {
   email: string
@@ -29,8 +30,7 @@ export default class AuthService {
 
     const tokens = TokenService.generateTokens(user.id, user.email)
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { hashedPassword, ...userData } = user
+    const userData = removeFields(user, ['hashedPassword'])
 
     return {
       userData,
@@ -57,8 +57,7 @@ export default class AuthService {
     if (newUser) {
       const tokens = TokenService.generateTokens(newUser.id, newUser.email)
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { hashedPassword, ...userData } = newUser
+      const userData = removeFields(newUser, ['hashedPassword'])
 
       return {
         userData,
