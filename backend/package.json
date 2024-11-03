@@ -16,7 +16,7 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "scripts": {
-    "build": "npx tsc",
+    "build": "prisma generate && npx tsc",
     "preview": "node dist/index.js",
     "dev": "nodemon",
     "lint": "eslint --ignore-pattern \"dist/**/*\"",
