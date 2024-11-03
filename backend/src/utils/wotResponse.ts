@@ -17,11 +17,16 @@ export default class WotResponse {
   }
 
   static reduceObject(data: IVehicleResponseData): IVehicleData {
-    const { is_wheeled, tank_id } = data
+    const { tank_id, name, tier, nation, type, images, is_premium } = data
 
     return {
-      is_wheeled,
+      name,
+      tier,
+      nation,
+      type,
       tank_id,
+      is_premium,
+      image: images.big_icon,
     }
   }
 }
