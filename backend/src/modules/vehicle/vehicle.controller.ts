@@ -1,11 +1,8 @@
-import { NextFunction, Request, Response, Router } from 'express'
-import VehicleService from './vehicle.servise'
+import { NextFunction, Request, Response } from 'express'
+import VehicleService from './vehicle.service'
 
-const router = Router()
-
-router.get(
-  '/getList',
-  async (req: Request, res: Response, next: NextFunction) => {
+export default class VehicleController {
+  static async getList(req: Request, res: Response, next: NextFunction) {
     try {
       const list = await VehicleService.getList()
 
@@ -13,7 +10,5 @@ router.get(
     } catch (error) {
       next(error)
     }
-  },
-)
-
-export default router
+  }
+}

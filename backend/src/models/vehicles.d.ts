@@ -1,15 +1,27 @@
 export type IVehicleResponse = IVehicleErrorResponse | IVehicleSuccessResponse
 
 export interface IVehicleData {
-  is_wheeled: boolean
+  is_premium: boolean
   tank_id: number
+  tier: number
+  name: string
+  nation: string
+  type: string
+  image: string
 }
 
 export interface IVehicleResponseData {
-  is_wheeled: boolean
+  is_premium: boolean
   tank_id: number
-  engines: number[]
-  radios: number[]
+  tier: number
+  name: string
+  nation: string
+  type: string
+  images: {
+    small_icon: string
+    contour_icon: string
+    big_icon: string
+  }
 }
 
 export interface IVehicleResMeta {

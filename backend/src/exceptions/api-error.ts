@@ -9,7 +9,7 @@ export default class ApiError extends Error {
   }
 
   static UnauthorizedError(message: string = '') {
-    return new ApiError(401, 'User not authenticated' + message)
+    return new ApiError(401, 'Auth error: ' + message)
   }
 
   static BadRequest(message: string, errors: unknown[] = []) {

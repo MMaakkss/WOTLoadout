@@ -1,8 +1,11 @@
 import { Router } from 'express'
-import vehicleRouter from '../modules/vehicle/vehicle.controller'
+import auth from './auth'
+
+import vehicle from './vehicle'
 
 const router = Router()
 
-router.use(vehicleRouter)
+router.use('/auth', auth)
+router.use('/vehicle', vehicle)
 
 export default router
