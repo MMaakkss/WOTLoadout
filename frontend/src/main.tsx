@@ -2,36 +2,48 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import { ChakraProvider } from '@chakra-ui/react'
 import Login from './pages/Login.tsx'
 import HomePage from './pages/HomePage.tsx'
 import AuthProvider from './components/AuthProvider.tsx'
 import ProtectedRoute from './components/ProtectedRoute.tsx'
+import BaseLayout from './layouts/BaseLayout/BaseLayout.tsx'
+import AppWrapper from './components/AppWrapper.tsx'
+
+import './styles/main.scss'
 
 import { store } from './store/store.ts'
 
-import './index.css'
-
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: (
-      <ProtectedRoute allowedRoles={['admin']}>
-        <HomePage />
-      </ProtectedRoute>
-    ),
+    element: <BaseLayout/>,
+    children: [
+      {
+        path: '/',
+        element: (
+            <ProtectedRoute allowedRoles={['admin']}>
+              <HomePage />
+            </ProtectedRoute>
+        ),
+      },
+    ]
   },
   {
-    path: 'signin',
+    path: '/signin',
     element: <Login />,
   },
 ])
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Provider store={store}>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </Provider>
+    <ChakraProvider>
+      <Provider store={store}>
+        <AuthProvider>
+          <AppWrapper>
+            <RouterProvider router={router} />
+          </AppWrapper>
+        </AuthProvider>
+      </Provider>
+    </ChakraProvider>
   </StrictMode>,
 )
