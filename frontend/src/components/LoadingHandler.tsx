@@ -1,18 +1,18 @@
-import { FC, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import Error from '../components/Error/Error.tsx'
 import Loading from '../components/Loading/Loading.tsx'
 
-interface LoadingHandlerProps {
+interface ILoadingHandlerProps {
   isLoading: boolean
   isError: boolean
   children: ReactNode
 }
 
-const LoadingHandler: FC<LoadingHandlerProps> = ({
+const LoadingHandler = ({
   isLoading,
   isError,
   children,
-}) => {
+}: ILoadingHandlerProps) => {
   return <>{isLoading ? <Loading /> : isError ? <Error /> : children}</>
 }
 
