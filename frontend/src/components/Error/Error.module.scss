@@ -1,0 +1,21 @@
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+
+  &Title {
+    font-size: 50px;
+  }
+
+  &Text {
+    font-size: 24px;
+  }
+
+  &Icon {
+    color: #ff6f70;
+    font-size: 144px;
+  }
+}

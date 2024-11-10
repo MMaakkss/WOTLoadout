@@ -1,9 +1,15 @@
-import { useGetVehiclesQuery } from '../api/vehicleApi.ts'
+import { useGetVehiclesQuery } from '../api/vehicleApi'
+import LoadingHandler from '../components/LoadingHandler'
 
 const HomePage = () => {
-  const { data, isLoading } = useGetVehiclesQuery()
+  const { data, isLoading, isError } = useGetVehiclesQuery()
+
   return (
-    <div>{isLoading ? 'loading...' : <div>{JSON.stringify(data)}</div>}</div>
+    <>
+      <LoadingHandler isLoading={isLoading} isError={isError}>
+        <div>{JSON.stringify(data)}</div>
+      </LoadingHandler>
+    </>
   )
 }
 

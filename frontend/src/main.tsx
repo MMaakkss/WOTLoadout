@@ -10,23 +10,21 @@ import ProtectedRoute from './components/ProtectedRoute.tsx'
 import BaseLayout from './layouts/BaseLayout/BaseLayout.tsx'
 import AppWrapper from './components/AppWrapper.tsx'
 
-import './styles/main.scss'
-
 import { store } from './store/store.ts'
 
 const router = createBrowserRouter([
   {
-    element: <BaseLayout/>,
+    element: <BaseLayout />,
     children: [
       {
         path: '/',
         element: (
-            <ProtectedRoute allowedRoles={['admin']}>
-              <HomePage />
-            </ProtectedRoute>
+          <ProtectedRoute allowedRoles={['admin']}>
+            <HomePage />
+          </ProtectedRoute>
         ),
       },
-    ]
+    ],
   },
   {
     path: '/signin',

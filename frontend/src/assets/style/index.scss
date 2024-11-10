@@ -1,0 +1,16 @@
+@forward 'variables';
+
+#root {
+  width: 100vw;
+  height: 100svh;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  color: #2b3440;
+  min-height: 100vh;
+}
