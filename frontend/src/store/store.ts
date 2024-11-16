@@ -1,12 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { api } from '../api/api.ts'
+import { authApi } from '@/api/authApi.ts'
+import { vehicleApi } from '@/api/vehicleApi'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+
+const rootReducer = combineReducers({
+  [authApi.reducerPath]: authApi.reducer,
+  [vehicleApi.reducerPath]: vehicleApi.reducer,
+})
 
 export const store = configureStore({
-  reducer: {
-    [api.reducerPath]: api.reducer,
-  },
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware),
+    getDefaultMiddleware().concat(authApi.middleware, vehicleApi.middleware),
 })
 
 export type RootState = ReturnType<typeof store.getState>

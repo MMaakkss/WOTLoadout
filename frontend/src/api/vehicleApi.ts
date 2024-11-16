@@ -1,7 +1,13 @@
-import { api } from './api.ts'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IVehicle } from '../types/vehicle.ts'
 
-export const vehicleApi = api.injectEndpoints({
+const apiUrl = import.meta.env.VITE_API_URL
+
+export const vehicleApi = createApi({
+  reducerPath: 'vehicleApi',
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${apiUrl}/vehicle`,
+  }),
   endpoints: (builder) => ({
     getVehicles: builder.query<IVehicle[], void>({
       query: () => '/getList',
