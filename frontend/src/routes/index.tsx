@@ -3,6 +3,7 @@ import AuthLayout from '@/layouts/AuthLayout/AuthLayout'
 import BaseLayout from '@/layouts/BaseLayout/BaseLayout'
 import HomePage from '@/pages/HomePage'
 import Login from '@/pages/Login'
+import Register from '@/pages/Register'
 import { UserRole } from '@/types/user'
 import { createBrowserRouter } from 'react-router-dom'
 
@@ -26,6 +27,15 @@ export const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />,
+      },
+    ],
+  },
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: '/register',
+        element: <Register />,
       },
     ],
   },
