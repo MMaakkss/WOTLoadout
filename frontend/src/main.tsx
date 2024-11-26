@@ -5,12 +5,13 @@ import { Provider } from 'react-redux'
 import { RouterProvider } from 'react-router-dom'
 import AppWrapper from './components/AppWrapper.tsx'
 import AuthProvider from './components/AuthProvider.tsx'
+import theme from './theme/theme.tsx'
 import { router } from './routes/index.tsx'
 import { store } from './store/store.ts'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Provider store={store}>
         <AuthProvider>
           <AppWrapper>
