@@ -6,13 +6,20 @@ const theme = extendTheme({
     Input: {
       baseStyle: {
         field: {
-          borderRadius: '8px', // Закруглення
+          borderRadius: '8px',
+          _disabled: {
+            cursor: 'not-allowed',
+            border: 'none',
+            _light: {
+              backgroundColor: '#E8E8E8FF',
+            },
+          },
           _light: {
-            backgroundColor: '#ffffff', // Колір фону для світлої теми
+            backgroundColor: '#ffffff',
             border: '1px solid #E5E6E6',
           },
           _focus: {
-            borderColor: 'blue.500', // Колір рамки при фокусі
+            borderColor: 'blue.500',
             boxShadow: '0 0 0 1px blue.500',
           },
           _placeholder: {
@@ -28,13 +35,13 @@ const theme = extendTheme({
         md: {
           field: {
             height: '48px',
-            padding: '14px 16px', // Відступи
+            padding: '14px 16px',
           },
         },
       },
       defaultProps: {
-        size: 'md', // Розмір за замовчуванням
-        variant: 'filled', // Варіант за замовчуванням
+        size: 'md',
+        variant: 'filled',
       },
     },
 
@@ -60,13 +67,13 @@ const theme = extendTheme({
         md: {
           width: '100%',
           fontWeight: 600,
-          fontSize: '14px', // Розмір тексту
-          padding: '24px 16px', // Відступи
+          fontSize: '14px',
+          padding: '24px 16px',
         },
       },
       defaultProps: {
-        size: 'md', // Розмір за замовчуванням
-        variant: 'solid', // Варіант за замовчуванням
+        size: 'md',
+        variant: 'solid',
       },
     },
     Text: {

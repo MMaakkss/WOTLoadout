@@ -21,6 +21,7 @@ interface IDefaultValues {
 
 const Register = () => {
   const [registerRequest] = useRegisterMutation()
+  //const [isDisabled, setIsDisabled] = useState(false)
   // const navigate = useNavigate()
   const {
     handleSubmit,

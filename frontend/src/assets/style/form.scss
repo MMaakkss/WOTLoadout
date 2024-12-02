@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..900;1,14..32,400..900&family=Poppins:wght@400;500&family=Roboto:wght@400;500&display=swap');
-
+@forward './index.scss';
 .wrapper {
   display: flex;
   gap: 32px;
