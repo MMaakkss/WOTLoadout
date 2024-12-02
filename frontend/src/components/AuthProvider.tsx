@@ -1,5 +1,5 @@
 import { PropsWithChildren, useEffect, useState } from 'react'
-import { User } from '../types/user'
+import { User, UserRole } from '../types/user'
 import { AuthContext } from '../context/authContext'
 
 export default function AuthProvider({ children }: PropsWithChildren) {
@@ -10,9 +10,11 @@ export default function AuthProvider({ children }: PropsWithChildren) {
     setIsLoading(true)
 
     try {
-      const response = {
-        role: 'admin',
-        name: 'Anatoliy',
+      const response: User = {
+        role: UserRole.USER,
+        email: '12312',
+        id: 'dsadas',
+        nickname: 'Anatoliy',
       }
 
       setCurrentUser(response)

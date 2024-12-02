@@ -1,0 +1,34 @@
+@forward './index.scss';
+.wrapper {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  &__info {
+    max-width: 340px;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 384px;
+  padding: 32px;
+  box-shadow: 3px 5px 10px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column-reverse;
+  }
+  p {
+    display: none;
+  }
+}
