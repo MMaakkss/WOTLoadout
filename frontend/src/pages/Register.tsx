@@ -52,7 +52,7 @@ const Register = () => {
           <Input
             id='nickname'
             type='nickname'
-            placeholder='nickname'
+            placeholder='Nickname'
             {...register('nickname', {
               required: 'Nickname is required',
               minLength: { value: 3, message: 'Minimum length should be 3' },
@@ -68,7 +68,7 @@ const Register = () => {
           <Input
             id='email'
             type='email'
-            placeholder='email'
+            placeholder='Email'
             {...register('email', {
               required: 'Email is required',
               pattern: {
@@ -86,7 +86,7 @@ const Register = () => {
           <Input
             id='password'
             type='password'
-            placeholder='password'
+            placeholder='Password'
             {...register('password', {
               required: 'Password is required',
               minLength: { value: 6, message: 'Minimum length should be 6' },
@@ -102,7 +102,7 @@ const Register = () => {
           <Input
             id='repeatPassword'
             type='password'
-            placeholder='repeat password'
+            placeholder='Repeat password'
             {...register('repeatPassword', {
               required: 'Password is required',
               validate: (value: string) =>

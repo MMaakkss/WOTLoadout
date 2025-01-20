@@ -50,7 +50,7 @@ const Login = () => {
           <Input
             id='email'
             type='email'
-            placeholder='email'
+            placeholder='Email'
             {...register('email', {
               required: 'Email is required',
               pattern: {
@@ -68,7 +68,7 @@ const Login = () => {
           <Input
             id='password'
             type='password'
-            placeholder='password'
+            placeholder='Password'
             {...register('password', {
               required: 'Password is required',
               minLength: { value: 6, message: 'Minimum length should be 6' },
