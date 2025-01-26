@@ -5,35 +5,37 @@ import {
   Input,
   Button,
   FormErrorMessage,
-  Heading,
   Text,
+  Heading,
 } from '@chakra-ui/react'
 import '../assets/style/form.scss'
-import { useLoginMutation } from '@/api/authApi'
+import { useRegisterMutation } from '@/api/authApi'
 import { useEffect } from 'react'
 
 interface IDefaultValues {
   email: string
+  nickname: string
   password: string
+  repeatPassword: string
 }
 
-const Login = () => {
-  const [loginRequest] = useLoginMutation()
+const Register = () => {
+  const [registerRequest] = useRegisterMutation()
+  //const [isDisabled, setIsDisabled] = useState(false)
   // const navigate = useNavigate()
   const {
     handleSubmit,
     register,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<IDefaultValues>({
-    defaultValues: {
-      email: '',
-      password: '',
-    },
     mode: 'onSubmit',
   })
 
   const onSubmit = async (values: IDefaultValues) => {
-    const response = await loginRequest(values)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { repeatPassword, ...userData } = values
+    const response = await registerRequest(userData)
     console.log(response)
   }
 
@@ -45,6 +47,22 @@ const Login = () => {
   return (
     <div className='wrapper'>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl isInvalid={!!errors.nickname}>
+          <FormLabel htmlFor='nickname'>Nickname</FormLabel>
+          <Input
+            id='nickname'
+            type='nickname'
+            placeholder='Nickname'
+            {...register('nickname', {
+              required: 'Nickname is required',
+              minLength: { value: 3, message: 'Minimum length should be 3' },
+              maxLength: { value: 24, message: 'Maximum length should be 24' },
+            })}
+          />
+          <FormErrorMessage>
+            {errors.nickname && errors.nickname.message}
+          </FormErrorMessage>
+        </FormControl>
         <FormControl isInvalid={!!errors.email}>
           <FormLabel htmlFor='email'>Email</FormLabel>
           <Input
@@ -79,17 +97,28 @@ const Login = () => {
             {errors.password && errors.password.message}
           </FormErrorMessage>
         </FormControl>
-        <Button
-          mt={4}
-          colorScheme='teal'
-          isLoading={isSubmitting}
-          type='submit'
-        >
-          Login
+        <FormControl isInvalid={!!errors.repeatPassword}>
+          <FormLabel htmlFor='repeatPassword'>Repeat Password</FormLabel>
+          <Input
+            id='repeatPassword'
+            type='password'
+            placeholder='Repeat password'
+            {...register('repeatPassword', {
+              required: 'Password is required',
+              validate: (value: string) =>
+                value === watch('password') || 'The passwords do not match',
+            })}
+          />
+          <FormErrorMessage>
+            {errors.repeatPassword && errors.repeatPassword.message}
+          </FormErrorMessage>
+        </FormControl>
+        <Button mt={4} isLoading={isSubmitting} type='submit'>
+          Submit
         </Button>
       </form>
       <div className='wrapper__info'>
-        <Heading size='2xl'>Login now!</Heading>
+        <Heading size='2xl'>Register</Heading>
         <Text>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, a
           voluptates obcaecati unde fuga harum magni quae cupiditate,
@@ -101,4 +130,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register
